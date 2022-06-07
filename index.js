@@ -9,8 +9,8 @@ var questionsArr = [
         answer: true
     },
 
-    {  question:'The Dallas Cowboys is worth over $6B and is one of the most valuable franchises in all of sports',
-        answer: true
+    {  question:'The Dallas Cowboys is worth over $9B and is one of the most valuable franchises in all of sports',
+        answer: false
     },
 
     {   question:'Eli and Peyton Manning are the only brothers to both win the Super Bowl MVP',
@@ -23,21 +23,28 @@ var questionsArr = [
 
 ]
 
+var userScore = 0
 
 function runQuiz () {
     for (var i = 0; i < questionsArr.length; i++) {
         var questions = questionsArr [i]
-        var askQuestion = confirm(questions.question)
-        
-        var userScore = 0 
+        var askQuestion = confirm(questions.question)      
+       
 
-        if (askQuestion && questions.answer) {
-            userScore + 20
-            console.log(userScore)
+        if (askQuestion === questions.answer) {
+            userScore++
         }
     }
-    if (userScore <= 20) {
-        alert('Your score is ' + userScore)
+    if (userScore > 0) {
+        alert('Your score is ' + (userScore/i*100) + '%')
+
+        var scoreNum = (userScore/i*100)
+        var userNum = parseInt(scoreNum)
+        Math.round(userNum)
+        console.log(userNum)
+    }
+    else {
+        alert('Your score is 0' + '%')
     }
 
 }
